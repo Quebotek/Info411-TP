@@ -14,7 +14,7 @@
         <div class="pokemon">
             <h2> Titre : {{pokemon.Nom_Pokemon}} </h2>
             <p> Type1 : {{pokemon.type1}} </p>
-            <p> Type2 : {{pokemon.type2}} </p>
+            <p v-if="pokemon.type2 != 'Null'"> Type2 : {{pokemon.type2}} </p>
             <p> Génération : {{pokemon.Génération}} </p>
             </ul>
         </div>
