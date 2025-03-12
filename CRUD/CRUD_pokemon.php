@@ -6,8 +6,10 @@ function list_pokemon($CONNEXION) {
                 p.nom AS Nom_Pokemon, 
                 t1.nom_type AS type1,
                 COALESCE(t2.nom_type, 'Null') AS type2, 
-                p.generation AS Génération 
+                p.generation AS Génération,
+                images_ascii.ascii_image AS image_pokemon
             FROM pokemon p 
+            JOIN images_ascii ON images_ascii.id = p.id_pokemon
             JOIN Types AS t1 ON p.type1 = t1.id_type 
             LEFT JOIN Types AS t2 ON p.type2 = t2.id_type 
             ORDER BY p.id_pokemon;"; 
