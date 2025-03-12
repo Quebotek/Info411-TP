@@ -1,19 +1,23 @@
+const { createApp } = Vue
 
-const { createApp } = Vue;
+createApp({
 
-
-const app = createApp({
-        data() {
-            return {
-      
-            };
-        },
-        mounted() {
-            
-        },
-        methods: {
-            
-        }
-    });
-	
-app.mount('#app');
+	data() {
+		return {
+            url_books :"http://localhost:8888/CRUD/CRUD_pokemon.php",
+            pokemons : []
+		}
+	},
+	mounted() {
+		this.load_pokemon()
+	},
+	methods : {
+		load_pokemon: async function(){
+			const response = await axios.get(this.url_books)
+			console.log(response.data)
+			res = response.data
+            this.pokemons = res 
+		}
+		}
+	}
+).mount('#app')

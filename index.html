@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier</title>
+    <title>Pokemon</title>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 
-<div id="app">   
+<div id="app"> 
+    
+    <div id="pokemons" v-for="pokemon in pokemons">
+        <div class="pokemon">
+            <h2> Titre : {{pokemon.Nom_Pokemon}} </h2>
+            <p> Type1 : {{pokemon.type1}} </p>
+            <p> Type2 : {{pokemon.type2}} </p>
+            <p> Génération : {{pokemon.Génération}} </p>
+            </ul>
+        </div>
+    </div>
 
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="JS/vue.global.js" ></script>
 <script src="JS/main.js" defer></script>
 
