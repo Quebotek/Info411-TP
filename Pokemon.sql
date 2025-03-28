@@ -24,33 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Attaques`
---
-
-CREATE TABLE `Attaques` (
-  `id_attaque` int NOT NULL,
-  `nom_attaque` varchar(100) NOT NULL,
-  `type_attaque` varchar(50) NOT NULL,
-  `puissance` int NOT NULL,
-  `taux_reussite` int NOT NULL,
-  `pp` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Evolutions`
---
-
-CREATE TABLE `Evolutions` (
-  `id_pokemon` int NOT NULL,
-  `pokemon_evolution` int DEFAULT NULL,
-  `niveau_evolution` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `images_ascii`
 --
 
@@ -397,17 +370,6 @@ INSERT INTO `Pokemon` (`id_pokemon`, `nom`, `type1`, `type2`, `generation`) VALU
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Pokemon_Attaque`
---
-
-CREATE TABLE `Pokemon_Attaque` (
-  `id_pokemon` int NOT NULL,
-  `id_attaque` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `Types`
 --
 
@@ -445,19 +407,6 @@ INSERT INTO `Types` (`id_type`, `nom_type`) VALUES
 --
 
 --
--- Index pour la table `Attaques`
---
-ALTER TABLE `Attaques`
-  ADD PRIMARY KEY (`id_attaque`);
-
---
--- Index pour la table `Evolutions`
---
-ALTER TABLE `Evolutions`
-  ADD PRIMARY KEY (`id_pokemon`),
-  ADD KEY `pokemon_evolution` (`pokemon_evolution`);
-
---
 -- Index pour la table `images_ascii`
 --
 ALTER TABLE `images_ascii`
@@ -470,13 +419,6 @@ ALTER TABLE `Pokemon`
   ADD PRIMARY KEY (`id_pokemon`);
 
 --
--- Index pour la table `Pokemon_Attaque`
---
-ALTER TABLE `Pokemon_Attaque`
-  ADD PRIMARY KEY (`id_pokemon`,`id_attaque`),
-  ADD KEY `id_attaque` (`id_attaque`);
-
---
 -- Index pour la table `Types`
 --
 ALTER TABLE `Types`
@@ -485,12 +427,6 @@ ALTER TABLE `Types`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
-
---
--- AUTO_INCREMENT pour la table `Attaques`
---
-ALTER TABLE `Attaques`
-  MODIFY `id_attaque` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `Pokemon`
@@ -504,24 +440,6 @@ ALTER TABLE `Pokemon`
 ALTER TABLE `Types`
   MODIFY `id_type` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `Evolutions`
---
-ALTER TABLE `Evolutions`
-  ADD CONSTRAINT `evolutions_ibfk_1` FOREIGN KEY (`id_pokemon`) REFERENCES `Pokemon` (`id_pokemon`) ON DELETE CASCADE,
-  ADD CONSTRAINT `evolutions_ibfk_2` FOREIGN KEY (`pokemon_evolution`) REFERENCES `Pokemon` (`id_pokemon`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `Pokemon_Attaque`
---
-ALTER TABLE `Pokemon_Attaque`
-  ADD CONSTRAINT `pokemon_attaque_ibfk_1` FOREIGN KEY (`id_pokemon`) REFERENCES `Pokemon` (`id_pokemon`) ON DELETE CASCADE,
-  ADD CONSTRAINT `pokemon_attaque_ibfk_2` FOREIGN KEY (`id_attaque`) REFERENCES `Attaques` (`id_attaque`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
