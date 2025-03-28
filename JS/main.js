@@ -4,7 +4,7 @@ createApp({
 
 	data() {
 		return {
-            url_books :"http://localhost:8888/CRUD/CRUD_pokemon.php",
+            url_books :"http://localhost:80/CRUD/CRUD_pokemon.php",
             pokemons : []
 		}
 	},

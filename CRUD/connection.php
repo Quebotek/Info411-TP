@@ -6,7 +6,7 @@
 	if (mysqli_connect_errno()) {
 		echo 'Désolé, connexion au serveur ' . SERVEUR_BD . ' impossible, '. mysqli_connect_error(), "\n";
     	exit();
-	}
+	}	
 	// Sélection de la base de données
 	mysqli_select_db($CONNEXION, NOM_BD);
 	if (mysqli_connect_errno()) {
