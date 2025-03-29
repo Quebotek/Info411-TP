@@ -1,0 +1,20 @@
+name: <your project name>
+services:
+    mariadb:
+        container_name: c_mariadb
+        environment:
+            - MARIADB_USER=userbd
+            - MARIADB_DATABASE=Pokemon
+            - MARIADB_PASSWORD=password
+            - MARIADB_ROOT_PASSWORD=root
+        volumes:
+            - ./bd_data:/var/lib/mysql
+            - ./SQL:/sql
+        ports:
+            - 3306:3306
+        image: mariadb
+    monapache_tp:
+        container_name: c_monapache_tp
+        ports:
+            - 80:80
+        image: monapache_tp
