@@ -3,10 +3,10 @@ services:
     mariadb:
         container_name: c_mariadb
         environment:
-            - MARIADB_USER=userbd
-            - MARIADB_DATABASE=Pokemon
-            - MARIADB_PASSWORD=password
-            - MARIADB_ROOT_PASSWORD=root
+            - MARIADB_USER=${USER_BD}
+            - MARIADB_DATABASE=${NOM_BD}
+            - MARIADB_PASSWORD=${USER_PWD}
+            - MARIADB_ROOT_PASSWORD=${ROOT_PWD}
         volumes:
             - ./bd_data:/var/lib/mysql
             - ./SQL:/sql
@@ -25,5 +25,5 @@ services:
         environment:
             - PMA_HOST=mariadb  # ✅ Match the service name
         ports:
-            - 8080:80
+            - ${PORT_SITE}:80
         image: phpmyadmin
