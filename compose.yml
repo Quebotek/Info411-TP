@@ -1,4 +1,4 @@
-name: <your project name>
+name: TP_KULAS
 services:
     mariadb:
         container_name: c_mariadb
@@ -18,3 +18,12 @@ services:
         ports:
             - 80:80
         image: monapache_tp
+    phpmyadmin:
+        container_name: c_phpmyadmin
+        depends_on:
+            - mariadb  # ✅ Match the actual MariaDB service name
+        environment:
+            - PMA_HOST=mariadb  # ✅ Match the service name
+        ports:
+            - 8080:80
+        image: phpmyadmin
